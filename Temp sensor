@@ -1,0 +1,22 @@
+// This #include statement was automatically added by the Particle IDE.
+#include <Adafruit_DHT.h>
+
+#define DHTPIN D6
+#define DHTTYPE DHT22
+
+DHT dht(DHTPIN,DHTTYPE);
+
+void setup() {
+    Serial.begin(9600);
+
+    dht.begin();
+
+}
+
+void loop() {
+    delay(30000);
+    String temp = String(dht.getTempCelcius());
+    Particle.publish("temp",temp,PRIVATE);
+
+}
+
